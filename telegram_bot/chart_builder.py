@@ -45,10 +45,8 @@ class ChartBuilder:
         plt.bar(labels, sizes, color=colors)
 
         plt.title(title, fontsize=14, fontweight='bold')
-        # plt.xlabel("Емоції", fontsize=12)
-        # plt.ylabel("Кількість", fontsize=12)
-        plt.xlabel("Emotions", fontsize=12)
-        plt.ylabel("Quantity", fontsize=12)
+        plt.xlabel("Емоції", fontsize=12)
+        plt.ylabel("Кількість", fontsize=12)
         plt.xticks(rotation=30, ha='right', fontsize=12)
         plt.yticks(fontsize=10)
 
