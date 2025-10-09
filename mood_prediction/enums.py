@@ -1,0 +1,48 @@
+from enum import Enum
+
+
+class EmotionName(Enum):
+    ADMIRATION = 'admiration'
+    AMUSEMENT = 'amusement'
+    ANGER = 'anger'
+    ANNOYANCE = 'annoyance'
+    APPROVAL = 'approval'
+    CARING = 'caring'
+    CONFUSION = 'confusion'
+    CURIOSITY = 'curiosity'
+    DESIRE = 'desire'
+    DISAPPOINTMENT = 'disappointment'
+    DISAPPROVAL = 'disapproval'
+    DISGUST = 'disgust'
+    EMBARRASSMENT = 'embarrassment'
+    EXCITEMENT = 'excitement'
+    FEAR = 'fear'
+    GRATITUDE = 'gratitude'
+    GRIEF = 'grief'
+    JOY = 'joy'
+    LOVE = 'love'
+    NERVOUSNESS = 'nervousness'
+    OPTIMISM = 'optimism'
+    PRIDE = 'pride'
+    REALIZATION = 'realization'
+    RELIEF = 'relief'
+    REMORSE = 'remorse'
+    SADNESS = 'sadness'
+    SURPRISE = 'surprise'
+    NEUTRAL = 'neutral'
+
+
+class EmotionalPolarityName(Enum):
+    NEGATIVE = "negative"
+    NEUTRAL = "neutral"
+    POSITIVE = "positive"
+
+
+class MoodName(Enum):
+    JOYFUL = "joyful"
+    CALM = "calm"
+    COGNITIVE = "cognitive"
+    NEUTRAL = "neutral"
+    ANXIOUS = "anxious"
+    SAD = "sad"
+    ANGRY = "angry"

@@ -1,0 +1,6 @@
+.env
+goemotions_model
+.venv
+venv
+.idea
+__pycache__
