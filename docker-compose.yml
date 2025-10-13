@@ -1,0 +1,39 @@
+services:
+
+  x-common: &common
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+
+  api:
+    <<: *common
+    ports:
+      - "8000:8000"
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000
+    depends_on:
+      - redis
+
+  bot:
+    <<: *common
+    command: python -m telegram_bot.bot
+
+  celery_worker:
+    <<: *common
+    command: celery -A celery_app.celery_app worker --loglevel=info
+    depends_on:
+      - api
+      - redis
+
+
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
