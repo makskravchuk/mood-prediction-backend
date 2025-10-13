@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import os
 
@@ -42,3 +43,6 @@ async def handle_text(message: types.Message):
 
 async def launch():
     await dp.start_polling(bot)
+
+if __name__ == "__main__":
+    asyncio.run(launch())
