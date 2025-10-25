@@ -17,7 +17,7 @@ class ChartBuilder:
             sizes.append(cell.value)
             colors.append(cell.color)
 
-        plt.rcParams['font.family'] = ['Segoe UI', 'Segoe UI Emoji']
+        plt.rcParams['font.family'] = ['DejaVu Sans', 'Noto Color Emoji']
         plt.figure(figsize=(6, 6))
         plt.pie(sizes, labels=labels, colors=colors, autopct='%1.2f%%', textprops={'fontsize': 12})
         plt.title(title, fontsize=14, fontweight='bold')
@@ -40,7 +40,7 @@ class ChartBuilder:
             sizes.append(cell.value)
             colors.append(cell.color)
 
-        plt.rcParams['font.family'] = ['Segoe UI', 'Segoe UI Emoji']
+        plt.rcParams['font.family'] = ['DejaVu Sans', 'Noto Color Emoji']
         plt.figure(figsize=(8, 6))
         plt.bar(labels, sizes, color=colors)
 
