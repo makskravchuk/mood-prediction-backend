@@ -17,6 +17,8 @@ RUN pip install --no-cache-dir --upgrade --default-timeout=1200 --retries=10 -r 
 
 COPY . .
 
+COPY mood_prediction/machine_learning/goemotions_model /app/mood_prediction/machine_learning/goemotions_model
+
 EXPOSE 8000
 
 RUN python init_resources.py
