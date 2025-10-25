@@ -26,10 +26,10 @@ class EmotionClassifier:
         if not os.path.exists(cls.__MODEL_PATH):
             cls.download_model()
 
-        if cls._tokenizer is None or cls._model is None:
-            cls._tokenizer = AutoTokenizer.from_pretrained(cls.__MODEL_PATH, local_files_only=True)
-            cls._model = AutoModelForSequenceClassification.from_pretrained(cls.__MODEL_PATH, local_files_only=True)
-        return cls._tokenizer, cls._model
+        if cls.tokenizer is None or cls.model is None:
+            cls.tokenizer = AutoTokenizer.from_pretrained(cls.__MODEL_PATH, local_files_only=True)
+            cls.model = AutoModelForSequenceClassification.from_pretrained(cls.__MODEL_PATH, local_files_only=True)
+        return cls.tokenizer, cls.model
 
     @classmethod
     def download_model(cls):
