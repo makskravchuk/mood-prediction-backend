@@ -34,10 +34,11 @@ class Emotion:
 
 class EmotionalPolarity:
 
-    def __init__(self, en_name: str, uk_name: str, sign: str):
+    def __init__(self, en_name: str, uk_name: str, sign: str, color: str):
         self.en_name = en_name
         self.uk_name = uk_name
         self.sign = sign
+        self.color = color
 
     def __str__(self):
         return f"{self.uk_name}"
