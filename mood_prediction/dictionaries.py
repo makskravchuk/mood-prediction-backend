@@ -95,7 +95,7 @@ MOOD_DICT: dict[MoodName, Mood] = {
                              color='#6C7AE0',
                              emotions=EMOTIONS_TO_MOOD[MoodName.COGNITIVE],
                              polarity=EMOTIONAL_POLARITY_DICT[EmotionalPolarityName.NEUTRAL]),
-    MoodName.NEUTRAL: Mood(en_name=MoodName.NEUTRAL.value.title(), uk_name='Нейтральний', emoji='😐', color='#D3D3D3',
+    MoodName.NEUTRAL: Mood(en_name=MoodName.NEUTRAL.value.title(), uk_name='Нейтральний', emoji='😐', color='#6C757D',
                            emotions=EMOTIONS_TO_MOOD[MoodName.NEUTRAL],
                            polarity=EMOTIONAL_POLARITY_DICT[EmotionalPolarityName.NEUTRAL]),
     MoodName.ANXIOUS: Mood(en_name=MoodName.ANXIOUS.value.title(), uk_name='Тривожний', emoji='😨', color='#FFB347',
