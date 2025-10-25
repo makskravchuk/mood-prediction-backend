@@ -22,3 +22,4 @@ if __name__ == "__main__":
 
     print("🧠 Ensuring emotion model is ready...")
     EmotionClassifier.download_model()
+    tokenizer, model = EmotionClassifier.load()

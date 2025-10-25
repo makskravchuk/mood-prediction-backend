@@ -8,8 +8,8 @@ class EmotionClassifier:
     __BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     __MODEL_PATH = os.path.join(__BASE_DIR, "goemotions_model")
     __MODEL_NAME = "monologg/bert-base-cased-goemotions-original"
-    tokenizer = AutoTokenizer.from_pretrained(__MODEL_PATH, local_files_only=True)
-    model = AutoModelForSequenceClassification.from_pretrained(__MODEL_PATH, local_files_only=True)
+    tokenizer = None
+    model = None
 
     @classmethod
     def predict_main_emotion(cls, text: str) -> str:
@@ -20,6 +20,16 @@ class EmotionClassifier:
         probabilities = torch.sigmoid(logits)[0]
         max_index = torch.argmax(probabilities).item()
         return cls.model.config.id2label[max_index]
+
+    @classmethod
+    def load(cls):
+        if not os.path.exists(cls.__MODEL_PATH):
+            cls.download_model()
+
+        if cls._tokenizer is None or cls._model is None:
+            cls._tokenizer = AutoTokenizer.from_pretrained(cls.__MODEL_PATH, local_files_only=True)
+            cls._model = AutoModelForSequenceClassification.from_pretrained(cls.__MODEL_PATH, local_files_only=True)
+        return cls._tokenizer, cls._model
 
     @classmethod
     def download_model(cls):
