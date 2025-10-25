@@ -28,7 +28,7 @@ def form_prediction_response(result: EmotionalStatePredictionResult) -> str:
         emotions_frequency_str += row
 
     return (f"🔎              Результати аналізу              🔎\n"
-            f"\n– Текст є <b>{polarity.uk_name.lower()}</b> за емоційною полярністю.\n"
+            f"\n– Емоційна полярність тексту: <b>{polarity.uk_name.lower()}</b>\n"
             f"\n– Домінуючий настрій: <b>{mood.uk_name.lower()}</b> {mood.emoji}\n"
             f"\n– Відсотковий роздподіл настроїв:\n {mood_distribution_str}\n"
             f"\n– Відносний частотний роздподіл емоцій:\n {emotions_frequency_str}"
