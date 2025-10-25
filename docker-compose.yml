@@ -1,6 +1,6 @@
 services:
 
-  x-common: &common
+  _common: &common
     build: .
     env_file:
       - .env
