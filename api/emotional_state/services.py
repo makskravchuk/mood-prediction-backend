@@ -15,6 +15,5 @@ class EmotionalStateService:
     @staticmethod
     def get_result(task_id: str) -> ResultResponse:
         task_result = AsyncResult(task_id)
-        data = task_result.result if task_result.successful() else None
-        result_dto = ResultDTO(**data)
+        result_dto = ResultDTO(**task_result.result) if task_result.successful() else None
         return ResultResponse(task_id=task_result.task_id, status=task_result.status, result=result_dto)

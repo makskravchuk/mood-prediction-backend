@@ -27,4 +27,5 @@ async def get_prediction_result(
         task_id: str,
         service: EmotionalStateService = Depends(EmotionalStateService)
 ) -> ResultResponse:
-    return service.get_result(task_id)
+    response = service.get_result(task_id)
+    return response
