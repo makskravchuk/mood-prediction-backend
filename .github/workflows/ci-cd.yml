@@ -1,0 +1,44 @@
+name: Build and Deploy MoodPrediction
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Injecting environment vars
+      run: |
+        echo "${{ secrets.PROD_SECRETS }}" >> .env
+    - name: Install Docker using Docker's official script
+      run: |
+        curl -fsSL https://get.docker.com -o get-docker.sh
+        sudo sh get-docker.sh
+      continue-on-error: false
+    - name: Install Docker Compose
+      run: |
+        sudo curl -L "https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+        docker-compose --version
+      continue-on-error: false
+    - name: Building Docker containers
+      run: |
+        docker-compose up -d --build
+        docker-compose logs
+
+  deploy:
+    name: Deploying on EC2 via SSH
+    if: ${{ github.event_name == 'push' }}
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploying Application on EC2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_EC2_IP }}
+        username: ${{ secrets.SSH_EC2_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          cd ~/.scripts
+          ./docker-ec2-deploy.sh
