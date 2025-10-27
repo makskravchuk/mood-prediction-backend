@@ -14,8 +14,6 @@ then
 	  exit 0
 fi
 
-# Checking if the repository is up to date.
-
 git fetch
 HEAD_HASH=$(git rev-parse HEAD)
 UPSTREAM_HASH=$(git rev-parse ${TARGET}@{upstream})
@@ -26,11 +24,9 @@ then
 	    exit 0
 fi
 
-# If there are new changes, we pull these changes.
 
 git pull origin main;
 
-# We can now build and start the containers
 sudo docker-compose down
 sudo docker system prune -af --volumes
 sudo docker-compose up -d --build
